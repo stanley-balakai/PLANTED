@@ -17,30 +17,39 @@
     .clamp.one-line {
         -webkit-line-clamp: 1;
     }
+    .text-custom-color {
+        color: #ff8f00;
+    }
 </style>
 
 <body style="font-family: Open Sans, sans-serif">
     <section class="px-6 py-8">
         <nav class="md:flex md:justify-between md:items-center">
-            <div>
-                
+            <div class="flex-grow text-left">
+                <a href="/" class="text-xs font-bold uppercase">Leaf Logo</a>
             </div>
 
-            <div class="mt-8 md:mt-0">
-                <a href="/" class="text-xs font-bold uppercase">Home Page</a>
+            <div class="text-center">
+                <h1 class="font-semibold text-xl text-custom-color leading-tight">Planted</h1>
+            </div>
 
-                <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
-                    Space Holder
-                </a>
+            <div class="flex-grow text-right">
+                @auth
+                    <a href="{{ url('/dashboard') }}" class="font-semibold text-white hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                @else
+                    <a href="{{ route('login') }}" class="font-semibold text-white hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="ml-4 font-semibold text-white hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                    @endif
+                @endauth
             </div>
         </nav>
 
         {{ $slot }}
 
         <footer class="bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16">
-            <img src="/images/lary-newsletter-icon.svg" alt="" class="mx-auto -mb-6" style="width: 145px;">
-            <h5 class="text-3xl">Space Holder</h5>
-            <p class="text-sm mt-3">More Space Holder</p>
+            <!-- Removed Space Holder content -->
 
             <div class="mt-10">
                 <div class="relative inline-block mx-auto lg:bg-gray-200 rounded-full">
@@ -58,9 +67,11 @@
                         <button type="submit"
                                 class="transition-colors duration-300 bg-blue-500 hover:bg-blue-600 mt-4 lg:mt-0 lg:ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-8"
                         >
-                            Space Holder
+                            <!-- Removed Space Holder -->
                         </button>
                     </form>
+               
+
                 </div>
             </div>
         </footer>
