@@ -1,0 +1,21 @@
+/* custom.css */
+
+body {
+    background-color: #004d40;
+    color: #b2dfdb;
+}
+
+.post-card {
+    background-color: #00796b;
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+}
+
+.accent {
+    color: #ff8f00;
+}
