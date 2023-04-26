@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Plant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+
 
 class PlantController extends Controller
 {
@@ -11,10 +13,15 @@ class PlantController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $plants = Plant::all();
-        return view('plants.index', compact('plants'));
-    }
+{
+    $plants = Cache::remember('plants', 60 * 60, function () {
+        return Plant::paginate(12);
+    });
+
+    return view('posts', compact('plants'));
+}
+    
+
 
     /**
      * Show the form for creating a new resource.
@@ -35,6 +42,8 @@ class PlantController extends Controller
             'description' => 'required|string',
             // Add other validation rules as needed
         ]);
+
+        Cache::forget('plants');
 
         // Create a new plant
         $plant = Plant::create([
@@ -76,6 +85,8 @@ class PlantController extends Controller
             // Add other validation rules as needed
         ]);
 
+        Cache::forget('plants');
+        
         // Update the plant's data
         $plant->update([
             'title' => $request->title,
@@ -92,6 +103,7 @@ class PlantController extends Controller
      */
     public function destroy(Plant $plant)
     {
+        Cache::forget('plants');
         $plant->delete();
         return redirect()->route('plants.index')->with('success', 'Plant deleted successfully.');
     }
