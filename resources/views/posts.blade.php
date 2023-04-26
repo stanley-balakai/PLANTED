@@ -3,107 +3,54 @@
     <head>
         <style>
             body {
-                background-color: #004d40;
+                background-color: #002604;
                 color: #b2dfdb;
             }
+        
             .post-card {
-            background-color: #00796b;
-            border-radius: 10px;
-            padding: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+                background-color: #017a0d;
+                border-radius: 10px;
+                padding: 20px;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
 
-        .post-card:hover {
-            transform: translateY(-5px) rotate(-2deg); /* Rotate the card slightly to make it jiggle */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 143, 0, 0.5); /* Add glow effect using box-shadow */
+            .post-card:hover {
+                transform: scale(1.05); /* Scale the card slightly to make it magnify */
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 143, 0, 0.5); /* Add glow effect using box-shadow */
+            }
 
-        }
+            .accent {
+                color: #ff8f00;
+            }
 
-        .accent {
-            color: #ff8f00;
-        }
+            /* Style for the image */
+            .card-image {
+                border-radius: 10px; /* Apply rounded corners to all sides of the image */
+            }
 
-        /* Different sizes for the cards */
-        .post-card.small {
-            height: 200px;
-        }
 
-        .post-card.medium {
-            height: 350px;
-        }
+            .card-footer {
+                border-radius: 0 0 10px 10px; /* Apply rounded corners to the bottom of the card-footer */
+            }
 
-        .post-card.large {
-            height: 500px;
-        }
     </style>
 </head>
 <section class="px-6 py-8">
     <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <article class="post-card">
-                <h2 class="text-2xl font-bold mb-2">Post 1 Title</h2>
-                <p class="mb-4">This is a summary or excerpt of post 1. You can add more content here.</p>
-                <a href="#" class="accent">Read More &rarr;</a>
-            </article>
-            <article class="post-card">
-                <h2 class="text-2xl font-bold mb-2">Post 2 Title</h2>
-                <p class="mb-4">This is a summary or excerpt of post 2. You can add more content here.</p>
-                <a href="#" class="accent">Read More &rarr;</a>
-            </article>
-            <article class="post-card">
-                <h2 class="text-2xl font-bold mb-2">Post 3 Title</h2>
-                <p class="mb-4">This is a summary or excerpt of post 3. You can add more content here.</p>
-                <a href="#" class="accent">Read More &rarr;</a>
-            </article>
-            <article class="post-card">
-                <h2 class="text-2xl font-bold mb-2">Post 4 Title</h2>
-                <p class="mb-4">This is a summary or excerpt of post 4. You can add more content here.</p>
-                <a href="#" class="accent">Read More &rarr;</a>
-            </article>
-            <article class="post-card">
-                <h2 class="text-2xl font-bold mb-2">Post 5 Title</h2>
-                <p class="mb-4">This is a summary or excerpt of post 5. You can add more content here.</p>
-                <a href="#" class="accent">Read More &rarr;</a>
-            </article>
-            <article class="post-card">
-                <h2 class="text-2xl font-bold mb-2">Post 6 Title</h2>
-                <p class="mb-4">This is a summary or excerpt of post 6. You can add more content here.</p>
-                <a href="#" class="accent">Read More &rarr;</a>
-            </article>
-            <article class="post-card">
-                <h2 class="text-2xl font-bold mb-2">Post 7 Title</h2>
-                <p class="mb-4">This is a summary or excerpt of post 7. You can add more content here.</p>
-                <a href="#" class="accent">Read More &rarr;</a>
-            </article>
-            <article class="post-card">
-                <h2 class="text-2xl font-bold mb-2">Post 8 Title</h2>
-                <p class="mb-4">This is a summary or excerpt of post 8. You can add more content here.</p>
-                <a href="#" class="accent">Read More &rarr;</a>
-            </article>
-            <article class="post-card">
-                <h2 class="text-2xl font-bold mb-2">Post 9 Title</h2>
-                <p class="mb-4">This is a summary or excerpt of post 9. You can add more content here.</p>
-                <a href="#" class="accent">Read More &rarr;</a>
-            </article>
-            
+            @foreach($plants as $plant)
+                <article class="post-card">
+                    <div class="rounded-xl">
+                        <img class="card-image border-4 border-green-800 rounded-xl" src="{{ $plant->image_url }}" alt="Plant image">
+                    </div>
+                    <h2 class="text-2xl font-bold mb-2">{{ $plant->name }}</h2>
+                    <p class="mb-4">{{ $plant->category->name }}</p>
+                    <p class="text-sm mb-4">Posted by: {{ $plant->user->name }}</p>
+                    <a href="{{ route('plants.show', $plant) }}" class="accent">Read More &rarr;</a>
+                </article>
+            @endforeach
         </div>
+        {{ $plants->links() }}
     </main>
 </section>
-<script>
-    // Function to assign random size classes to post-card elements
-    function randomizeCardSize() {
-        const cards = document.querySelectorAll('.post-card');
-        const sizes = ['small', 'medium', 'large'];
-
-        cards.forEach(card => {
-            const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
-            card.classList.add(randomSize);
-        });
-    }
-
-    // Call the randomizeCardSize function on page load
-    window.addEventListener('DOMContentLoaded', () => {
-        randomizeCardSize();
-    });
-</script>
 </x-layout>
