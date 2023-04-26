@@ -81,9 +81,11 @@
                 <a href="#" class="accent">Read More &rarr;</a>
             </article>
             <article class="post-card">
-                <h2 class="text-2xl font-bold mb-2">Post 9 Title</h2>9. You can add more content here.</p>
+                <h2 class="text-2xl font-bold mb-2">Post 9 Title</h2>
+                <p class="mb-4">This is a summary or excerpt of post 9. You can add more content here.</p>
                 <a href="#" class="accent">Read More &rarr;</a>
             </article>
+            
         </div>
     </main>
 </section>
