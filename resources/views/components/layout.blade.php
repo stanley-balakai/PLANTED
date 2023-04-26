@@ -32,6 +32,14 @@
         backdrop-filter: blur(20px);
         background-color: rgb(2, 26, 1);
     }
+    #footer {
+        background-color: #001f03;
+        color: #b2dfdb;
+    }
+
+    input::placeholder {
+        color: white;
+    }
 </style>
 
 <body style="font-family: Open Sans, sans-serif">
@@ -125,25 +133,25 @@
 {{ $slot }}
 </div>
 
-<footer class="bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16">
+<footer class=" border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16" id="footer">
 <!-- Removed Space Holder content -->
 
 <div class="mt-10">
-    <div class="relative inline-block mx-auto lg:bg-gray-200 rounded-full">
+    <div class="relative inline-block mx-auto  rounded-full">
 
         <form method="POST" action="#" class="lg:flex text-sm">
-            <div class="lg:py-3 lg:px-5 flex items-center">
-                <label for="email" class="hidden lg:inline-block">
-                    <img src="/images/mailbox-icon.svg" alt="mailbox letter">
+            <div class="lg:py-3 lg:px-5 flex items-center bg-green-400 rounded-lg">
+                <label for="email" class="hidden lg:inline-block rounded-lg">
+                    <!-- <img src="/images/mailbox-icon.svg" alt="mailbox letter"> -->
                 </label>
 
                 <input id="email" type="text " placeholder="Your email address"
-                class="lg:bg-transparent py-2 lg:py-0 pl-4 focus-within:outline-none">
+                class="lg:bg-transparent py-2 lg:py-0 pl-4 focus-within:outline-none rounded-lg" >
             </div>
 
             <button type="submit"
-                    class="transition-colors duration-300 bg-blue-500 hover:bg-blue-600 mt-4 lg:mt-0 lg:ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-8"
-            >
+                    class=" bg-green-700 hover:bg-green-800 mt-4 lg:mt-0 lg:ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-8 "
+            >Submit
                 <!-- Removed Space Holder -->
             </button>
         </form>
