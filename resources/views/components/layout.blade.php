@@ -36,6 +36,10 @@
         background-color: #001f03;
         color: #b2dfdb;
     }
+    .btn-custom-color {
+    color: #b2dfdb;
+}
+
 
     input::placeholder {
         color: white;
@@ -96,12 +100,19 @@
     @else
     <!-- Logged-in user dropdown -->
     <nav x-data="{ open: false }" class="relative">
-        <button @click="open = !open" class="flex items-center text-sm focus:outline-none">
+
+
+
+        <button @click="open = !open" class="flex items-center text-sm focus:outline-none btn-custom-color">
             <div class="mr-1">Hello, {{ Auth::user()->name }}</div>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>
         </button>
+        
+
+
+
         <div x-show="open" @click.away="open = false" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                 <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Profile</a>
