@@ -1,0 +1,34 @@
+.clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.clamp.one-line {
+    -webkit-line-clamp: 1;
+}
+.text-custom-color {
+    color: #ff8f00;
+}
+/* Add the following styles */
+.fixed-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    padding: 16px 6px;
+    z-index: 1000;
+    backdrop-filter: blur(20px);
+    background-color: rgb(2, 26, 1);
+}
+#footer {
+    background-color: #001f03;
+    color: #b2dfdb;
+}
+.btn-custom-color {
+    color: #b2dfdb;
+}
+
+input::placeholder {
+    color: white;
+}

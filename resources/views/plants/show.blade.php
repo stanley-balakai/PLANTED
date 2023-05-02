@@ -1,18 +1,7 @@
 <!-- resources/views/plants/show.blade.php -->
 <x-layout>
     <head>
-        <style>
-            body {
-                background-color: #002604;
-                color: #b2dfdb;
-            }
-            
-            .post-details {
-                background-color: #017a0d;
-                border-radius: 10px;
-                padding: 20px;
-            }
-        </style>
+        <link rel="stylesheet" href="{{ asset('css/show.css') }}">
     </head>
     
     <section class="px-6 py-8">
