@@ -1,0 +1,29 @@
+body {
+    background-color: #002604;
+    color: #b2dfdb;
+}
+
+.post-card {
+    background-color: #017a0d;
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+    transform: scale(1.05); /* Scale the card slightly to make it magnify */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 143, 0, 0.5); /* Add glow effect using box-shadow */
+}
+
+.accent {
+    color: #ff8f00;
+}
+
+/* Style for the image */
+.card-image {
+    border-radius: 10px; /* Apply rounded corners to all sides of the image */
+}
+
+.card-footer {
+    border-radius: 0 0 10px 10px; /* Apply rounded corners to the bottom of the card-footer */
+}

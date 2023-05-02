@@ -1,0 +1,10 @@
+body {
+    background-color: #002604;
+    color: #b2dfdb;
+}
+
+.post-details {
+    background-color: #017a0d;
+    border-radius: 10px;
+    padding: 20px;
+}
