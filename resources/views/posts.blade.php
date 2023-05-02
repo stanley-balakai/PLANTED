@@ -35,7 +35,13 @@
 
     </style>
 </head>
+
 <section class="px-6 py-8">
+    @if(isset($searchTerm))
+        <div class="mb-4 text-lg font-semibold">
+            Showing {{ $plants->total() }} results for "{{ $searchTerm }}"
+        </div>
+    @endif
     <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($plants as $plant)
