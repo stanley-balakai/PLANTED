@@ -107,4 +107,26 @@ class PlantController extends Controller
         $plant->delete();
         return redirect()->route('plants.index')->with('success', 'Plant deleted successfully.');
     }
+    
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('query');
+    
+        $plants = Plant::query()
+            ->where('name', 'LIKE', "%{$searchTerm}%")
+            ->orWhereHas('user', function ($query) use ($searchTerm) {
+                $query->where('name', 'LIKE', "%{$searchTerm}%");
+            })
+            ->orWhereHas('category', function ($query) use ($searchTerm) {
+                $query->where('name', 'LIKE', "%{$searchTerm}%");
+            })
+            ->orWhere('description', 'LIKE', "%{$searchTerm}%")
+            ->paginate(12);
+    
+        return view('posts', ['plants' => $plants, 'searchTerm' => $searchTerm]);
+    }
+    
+    
 }
+
+
