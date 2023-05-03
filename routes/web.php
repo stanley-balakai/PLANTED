@@ -7,6 +7,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlantCommentController;
+
 
 
 
@@ -35,7 +37,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -48,6 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('plants', PlantController::class);
 
     // Comment routes
+    Route::post('/plants/{plant}/comments', [PlantCommentController::class, 'store'])->name('plants.comments.store');
     Route::resource('comments', CommentController::class)->only(['store', 'update', 'destroy']);
 
     // Category routes

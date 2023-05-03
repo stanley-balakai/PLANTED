@@ -13,6 +13,9 @@
                 <img class="rounded-xl border-4 border-green-800 mb-4" src="{{ $plant->image_url }}" alt="Plant image">
                 <p class="text-lg">{{ $plant->description }}</p>
             </article>
+
+            <!-- Include the comments section -->
+            @include('plants.comments', ['plant' => $plant])
         </main>
     </section>
 </x-layout>
